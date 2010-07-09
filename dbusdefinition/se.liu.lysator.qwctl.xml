@@ -1,0 +1,30 @@
+<node>
+  <interface name="se.liu.lysator.qwctl">
+
+    <!-- Properties, i.e. data carrying variables -->
+    <property name="name" type="s" access="readwrite"/>
+
+    <!-- Methods, or slots which receives information -->
+    <method name="setPosition">
+      <arg name="x" type="i" direction="in"/>
+      <arg name="y" type="i" direction="in"/>
+    </method>
+
+    <method name="setSize">
+      <arg name="x" type="i" direction="in"/>
+      <arg name="y" type="i" direction="in"/>
+    </method>
+
+    <method name="setMinimized">
+      <arg name="minimize" type="b" direction="in"/>
+    </method>
+    
+    <!-- Signals, i.e. emitted information -->
+    <signal name="applicationInfo">
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In0" value="QVariant"/>
+      <arg name="info" type="a{sv}"/>
+    </signal>
+
+    <signal name="applicationClosed"/>
+  </interface>
+</node>
