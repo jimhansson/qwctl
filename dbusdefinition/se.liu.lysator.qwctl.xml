@@ -26,5 +26,6 @@
     </signal>
 
     <signal name="applicationClosed"/>
+
   </interface>
 </node>
