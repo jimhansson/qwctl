@@ -1,7 +1,7 @@
 // -*- mode:c++; indent-tabs-mode:nil; -*-
 
-#ifndef CLIENTUI_H
-#define CLIENTUI_H
+#ifndef CLIENT_H
+#define CLIENT_H
 
 #include "ui_client.h"
 
@@ -21,36 +21,28 @@ class ClientUi : public QMainWindow, private Ui::MainWindow
   {
   }
 
-  void setDBusAdaptor(QObject* adaptor)
-  {
-    connect(adaptor,SIGNAL(setSize(int,int)), this,SLOT(setSize(int,int)));
-    connect(adaptor,SIGNAL(setPosition(int,int)), this,SLOT(setPosition(int,int)));
-  }
-
- public Q_SLOTS:
-  void setSize(int x, int y)
-  {
-    _appendToTextBrowser(x,y);
-  }
-
-  void setPosition(int x, int y)
-  {
-    _appendToTextBrowser(x,y);
-  }
-
  private Q_SLOTS:
   // Private slot for "talking" with the gui, these will be automatically
   // connected to the buttons named.
-  void on_buttonFoo_clicked() { qDebug() << __func__; }
-  void on_buttonBar_clicked() { qDebug() << __func__; }
+  void on_buttonFoo_clicked()
+  {
+    qDebug() << __func__;
+    _appendToTextBrowser(__func__);
+  }
+  void on_buttonBar_clicked()
+  {
+    qDebug() << __func__;
+    _appendToTextBrowser(__func__);
+  }
   
  private:
-  void _appendToTextBrowser(int x, int y)
+  // Appends text to the client ui's textBrowser. Debugging only.
+  void _appendToTextBrowser(QString text)
   {
-    QString text = QString("%1(%2,%3)").arg(__func__).arg(x).arg(y);
-    textBrowser->append(text);
+    QString append_text = QString("%1(%2)").arg(__func__).arg(text);
+    textBrowser->append(append_text);
   }
-
+  
 };
 
 #endif
