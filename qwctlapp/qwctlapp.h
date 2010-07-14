@@ -31,7 +31,11 @@ class QWCtlAppUi : public QMainWindow, private Ui::MainWindow
   // connected to the buttons named.
   void on_buttonSetSize_clicked();
   void on_buttonSetPosition_clicked();
-  
+  void on_actionQuit_triggered(bool);
+
+  //void on_lineEditSize_textChanged(const QString&);
+  //void on_lineEditPosition_textChanged(const QString&);
+
  private:
   QWCtl* _qwctlproxy;
 };
