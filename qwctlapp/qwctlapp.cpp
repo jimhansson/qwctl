@@ -8,8 +8,25 @@
 #include <unistd.h>
 #include <assert.h>
 
+#include <QtCore/QRegExp>
+
 #include <QtGui/QApplication>
 
+
+// Misc functions.
+// ---------------------------------------------------------------------------
+inline bool
+parseTwoCommaSeparatedNumbers(const QString& text, int& a, int& b)
+{
+  static QRegExp rx("^(\\d{1,4}),(\\d{1,4})$");
+  if (rx.exactMatch(text)) {
+    a = rx.cap(1).toInt();
+    b = rx.cap(2).toInt();
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // In-file definitions of the ui-methods, we want to talk to the proxy.
 // ---------------------------------------------------------------------------
@@ -22,10 +39,13 @@ QWCtlAppUi::setProxyObject(QWCtl* proxy)
 void
 QWCtlAppUi::on_buttonSetSize_clicked()
 {
-
   if (_qwctlproxy) {
-    qDebug() << __func__;
-    _qwctlproxy->setSize(700,500);
+    int w, h;
+    if (parseTwoCommaSeparatedNumbers(lineEditSize->text(),w,h)) {
+      _qwctlproxy->setSize(w,h);
+    } else {
+      qDebug() << __func__ << ": Incorrect format for size";
+    }
   } else {
     qDebug() << "_qwctlproxy not set, operation ignored";
   }
@@ -35,13 +55,23 @@ void
 QWCtlAppUi::on_buttonSetPosition_clicked()
 {
   if (_qwctlproxy) {
-    qDebug() << __func__;
-    _qwctlproxy->setPosition(200,200);
+    int x, y;
+    if (parseTwoCommaSeparatedNumbers(lineEditSize->text(),x,y)) {
+      _qwctlproxy->setPosition(x,y);
+    } else {
+      qDebug() << __func__ << ": Incorrect format for position";
+    }
   } else {
     qDebug() << "_qwctlproxy not set, operation ignored";
   }
 }
 
+void
+QWCtlAppUi::on_actionQuit_triggered(bool /*checked_or_not*/)
+{
+  qDebug() << __func__ << ": Quiting via actionQuit";
+  QMainWindow::close();
+}
 
 int
 main(int ac, char** av)
