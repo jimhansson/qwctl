@@ -42,6 +42,7 @@ QWCtlAppUi::on_buttonSetSize_clicked()
   if (_qwctlproxy) {
     int w, h;
     if (parseTwoCommaSeparatedNumbers(lineEditSize->text(),w,h)) {
+      qDebug() << "Size: " << w << "," << h;
       _qwctlproxy->setSize(w,h);
     } else {
       qDebug() << __func__ << ": Incorrect format for size";
@@ -56,7 +57,8 @@ QWCtlAppUi::on_buttonSetPosition_clicked()
 {
   if (_qwctlproxy) {
     int x, y;
-    if (parseTwoCommaSeparatedNumbers(lineEditSize->text(),x,y)) {
+    if (parseTwoCommaSeparatedNumbers(lineEditPosition->text(),x,y)) {
+      qDebug() << "Pos: " << x << "," << y;
       _qwctlproxy->setPosition(x,y);
     } else {
       qDebug() << __func__ << ": Incorrect format for position";
