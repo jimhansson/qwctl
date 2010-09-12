@@ -8,7 +8,7 @@ SUBQMAKES := $(dir $(wildcard */qmake.pro))
 
 all distclean: $(SUBMAKES)
 	@for i in $^; do make -C $$i $@; done
-	@find -type f -name "*~" -delete;
+	@find -type f -\( -name "*~" -or -name "#*" -\) -delete;
 
 qmake: $(SUBQMAKES)
 	@for i in $^; do cd $$i; qmake; cd ..; done
