@@ -2,13 +2,16 @@
 
 .DEFAULT: all
 
-DIRS := client qwctlapp
+TARGETS   := client qwctlapp
+SUBMAKES  := $(dir $(wildcard */Makefile))
+SUBQMAKES := $(dir $(wildcard */qmake.pro))
 
-all distclean: $(DIRS)
+all distclean: $(SUBMAKES)
 	@for i in $^; do make -C $$i $@; done
+	@find -type f -name "*~" -delete;
 
-qmake: $(DIRS)
+qmake: $(SUBQMAKES)
 	@for i in $^; do cd $$i; qmake; cd ..; done
 
-run: $(DIRS)
+run: $(TARGETS)
 	@for i in $^; do ($$i/$$i &); done
