@@ -1,1 +1,8 @@
 A test project for dbus controlled layouts of QtGui applications.
+
+* Building
+  
+  you will need Qt development libraries and tools.
+  GCC or maybe some other C++ compiler may work.
+
+  in client and qwctlapp subdirectories run qmake and then run make, that should be all.
