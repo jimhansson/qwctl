@@ -1,0 +1,11 @@
+client/Makefile
+client/client
+client/moc_client.cpp
+client/moc_qwctl_adaptor.cpp
+client/ui_client.h
+qwctlapp/Makefile
+qwctlapp/moc_qwctl_proxy.cpp
+qwctlapp/moc_qwctlapp.cpp
+qwctlapp/qwctlapp
+qwctlapp/ui_qwctlapp.h
+
