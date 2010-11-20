@@ -13,6 +13,8 @@
 
 #include <QtGui/QApplication>
 
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusConnectionInterface>
 
 // Misc functions.
 // ---------------------------------------------------------------------------
@@ -35,6 +37,16 @@ QWCtlAppUi::QWCtlAppUi(QWidget* /*parent*/ = NULL)
   : _qwctlproxy(NULL), ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+  QDBusReply<QStringList> values = QDBusConnection::systemBus().interface()->registeredServiceNames();
+  if(values.isValid()) {
+    foreach(QString value, values.value()) {
+      QStringList text;
+      text << value;
+      ui->clientTreeWidget->addTopLevelItem(new QTreeWidgetItem(ui->clientTreeWidget,text));
+    }
+  }
+  else
+    qDebug() << "Could not get the list of services from DBus";
 }
 
 QWCtlAppUi::~QWCtlAppUi()
