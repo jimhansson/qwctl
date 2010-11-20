@@ -1,6 +1,7 @@
 // -*- mode:c++; indent-tabs-mode:nil; -*-
 
 #include "qwctlapp.h"
+#include "ui_qwctlapp.h"
 
 #include "qwctl_proxy.h"
 
@@ -30,6 +31,16 @@ parseTwoCommaSeparatedNumbers(const QString& text, int& a, int& b)
 
 // In-file definitions of the ui-methods, we want to talk to the proxy.
 // ---------------------------------------------------------------------------
+QWCtlAppUi::QWCtlAppUi(QWidget* /*parent*/ = NULL)
+  : _qwctlproxy(NULL), ui(new Ui::MainWindow)
+{
+  ui->setupUi(this);
+}
+
+QWCtlAppUi::~QWCtlAppUi()
+{
+}
+
 void
 QWCtlAppUi::setProxyObject(QWCtl* proxy)
 {
@@ -41,7 +52,7 @@ QWCtlAppUi::on_buttonSetSize_clicked()
 {
   if (_qwctlproxy) {
     int w, h;
-    if (parseTwoCommaSeparatedNumbers(lineEditSize->text(),w,h)) {
+    if (parseTwoCommaSeparatedNumbers(ui->lineEditSize->text(),w,h)) {
       qDebug() << "Size: " << w << "," << h;
       _qwctlproxy->setSize(w,h);
     } else {
@@ -57,7 +68,7 @@ QWCtlAppUi::on_buttonSetPosition_clicked()
 {
   if (_qwctlproxy) {
     int x, y;
-    if (parseTwoCommaSeparatedNumbers(lineEditPosition->text(),x,y)) {
+    if (parseTwoCommaSeparatedNumbers(ui->lineEditPosition->text(),x,y)) {
       qDebug() << "Pos: " << x << "," << y;
       _qwctlproxy->setPosition(x,y);
     } else {

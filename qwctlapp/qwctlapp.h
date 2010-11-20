@@ -3,29 +3,24 @@
 #ifndef QWCTLAPP_H
 #define QWCTLAPP_H
 
-#include "ui_qwctlapp.h"
-
 #include <QtCore/QDebug>
-
+#include <QtCore/QScopedPointer>
+#include <QtGui/QMainWindow>
 class QWCtl;
 
-class QWCtlAppUi : public QMainWindow, private Ui::MainWindow
+namespace Ui {
+  class MainWindow;
+}
+
+class QWCtlAppUi : public QMainWindow
 {
   Q_OBJECT;
-  
+
  public:
-  QWCtlAppUi(QWidget* /*parent*/ = NULL)
-      : _qwctlproxy(NULL)
-  {
-    setupUi(this);
-  }
-
-  ~QWCtlAppUi()
-  {
-  }
-
+  QWCtlAppUi(QWidget* parent);
+  ~QWCtlAppUi();
   void setProxyObject(QWCtl*);
-      
+
  private Q_SLOTS:
   // Private slot for "talking" with the gui, these will be automatically
   // connected to the buttons named.
@@ -38,6 +33,8 @@ class QWCtlAppUi : public QMainWindow, private Ui::MainWindow
 
  private:
   QWCtl* _qwctlproxy;
+  QScopedPointer<Ui::MainWindow> ui;
+  Q_DISABLE_COPY(QWCtlAppUi)
 };
 
 #endif
