@@ -2,6 +2,7 @@
 
 #include "qwctlapp.h"
 #include "ui_qwctlapp.h"
+#include "clients_model.h"
 
 #include "qwctl_proxy.h"
 
@@ -34,19 +35,11 @@ parseTwoCommaSeparatedNumbers(const QString& text, int& a, int& b)
 // In-file definitions of the ui-methods, we want to talk to the proxy.
 // ---------------------------------------------------------------------------
 QWCtlAppUi::QWCtlAppUi(QWidget* /*parent*/ = NULL)
-  : _qwctlproxy(NULL), ui(new Ui::MainWindow)
+  : _qwctlproxy(NULL), ui(new Ui::MainWindow),
+  clients_model(new DBusClientsModel())
 {
   ui->setupUi(this);
-  QDBusReply<QStringList> values = QDBusConnection::systemBus().interface()->registeredServiceNames();
-  if(values.isValid()) {
-    foreach(QString value, values.value()) {
-      QStringList text;
-      text << value;
-      ui->clientTreeWidget->addTopLevelItem(new QTreeWidgetItem(ui->clientTreeWidget,text));
-    }
-  }
-  else
-    qDebug() << "Could not get the list of services from DBus";
+  ui->clientTreeView->setModel(clients_model.data());
 }
 
 QWCtlAppUi::~QWCtlAppUi()

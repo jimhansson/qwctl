@@ -20,6 +20,6 @@ class DBusClientsModel : public QAbstractItemModel {
                       int role) const;
 
  private:
-  QDBusConnection bus;
+  QDBusConnection* bus;
   Q_DISABLE_COPY(DBusClientsModel);
 };

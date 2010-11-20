@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QTreeWidget" name="clientTreeWidget">
+     <widget class="QTreeView" name="clientTreeView">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>5</horstretch>
@@ -29,11 +29,6 @@
         <height>0</height>
        </size>
       </property>
-      <column>
-       <property name="text">
-        <string notr="true">1</string>
-       </property>
-      </column>
      </widget>
     </item>
     <item>
@@ -147,7 +142,7 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>clientTreeWidget</tabstop>
+  <tabstop>clientTreeView</tabstop>
   <tabstop>clientWebView</tabstop>
   <tabstop>lineEditSize</tabstop>
   <tabstop>buttonSetSize</tabstop>

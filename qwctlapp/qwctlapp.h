@@ -7,6 +7,7 @@
 #include <QtCore/QScopedPointer>
 #include <QtGui/QMainWindow>
 class QWCtl;
+class DBusClientsModel;
 
 namespace Ui {
   class MainWindow;
@@ -34,6 +35,7 @@ class QWCtlAppUi : public QMainWindow
  private:
   QWCtl* _qwctlproxy;
   QScopedPointer<Ui::MainWindow> ui;
+  QScopedPointer<DBusClientsModel> clients_model;
   Q_DISABLE_COPY(QWCtlAppUi)
 };
 
