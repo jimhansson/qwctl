@@ -42,7 +42,7 @@ QWCtlAppUi::QWCtlAppUi(QWidget* /*parent*/ = NULL)
     foreach(QString value, values.value()) {
       QStringList text;
       text << value;
-      ui->clientTreeWidget->addTopLevelItem(new QTreeWidgetItem(ui->clientTreeWidget,text));
+      // ui->clientTreeWidget->addTopLevelItem(new QTreeWidgetItem(ui->clientTreeWidget,text));
     }
   }
   else
