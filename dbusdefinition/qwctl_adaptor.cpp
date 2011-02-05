@@ -56,8 +56,7 @@ void QWCtlAdaptor::setName(const QString &value)
 void QWCtlAdaptor::setMinimized(bool minimize)
 {
   // handle method call se.liu.lysator.qwctl.setMinimized
-  QMetaObject::invokeMethod(parent(), "setMinimized", Q_ARG(bool, minimize));
-  qDebug() << __func__;
+  qDebug() << __func__ << ":" << minimize;
   foreach (QWidget* w, QApplication::topLevelWidgets()) {
     if (w->isWindow()) {
       if (minimize)

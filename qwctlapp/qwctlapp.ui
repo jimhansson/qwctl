@@ -32,21 +32,39 @@
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
       <item>
-       <widget class="QWebView" name="clientWebView">
+       <widget class="QWebView" name="clientWebView" native="true">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>1</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="url">
+        <property name="url" stdset="0">
          <url>
           <string>about:blank</string>
          </url>
         </property>
        </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="buttonMinimize">
+          <property name="text">
+           <string>Minimize</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonMaximize">
+          <property name="text">
+           <string>Maximize</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayoutSize">
@@ -115,7 +133,7 @@
      <x>0</x>
      <y>0</y>
      <width>450</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -143,7 +161,8 @@
  </customwidgets>
  <tabstops>
   <tabstop>clientTreeView</tabstop>
-  <tabstop>clientWebView</tabstop>
+  <tabstop>buttonMinimize</tabstop>
+  <tabstop>buttonMaximize</tabstop>
   <tabstop>lineEditSize</tabstop>
   <tabstop>buttonSetSize</tabstop>
   <tabstop>lineEditPosition</tabstop>

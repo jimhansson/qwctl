@@ -28,6 +28,8 @@ class QWCtlAppUi : public QMainWindow
   void on_buttonSetSize_clicked();
   void on_buttonSetPosition_clicked();
   void on_actionQuit_triggered(bool);
+  void on_buttonMinimize_clicked();
+  void on_buttonMaximize_clicked();
 
   //void on_lineEditSize_textChanged(const QString&);
   //void on_lineEditPosition_textChanged(const QString&);

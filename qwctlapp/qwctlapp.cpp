@@ -91,6 +91,27 @@ QWCtlAppUi::on_actionQuit_triggered(bool /*checked_or_not*/)
   QMainWindow::close();
 }
 
+void
+QWCtlAppUi::on_buttonMinimize_clicked()
+{
+  if (_qwctlproxy) {
+    _qwctlproxy->setMinimized(true);
+  } else {
+    qDebug() << "_qwctlproxy not set, operation ignored";
+  }
+}
+
+void
+QWCtlAppUi::on_buttonMaximize_clicked()
+{
+  if (_qwctlproxy) {
+    _qwctlproxy->setMinimized(false);
+  } else {
+    qDebug() << "_qwctlproxy not set, operation ignored";
+  }
+}
+
+
 int
 main(int ac, char** av)
 {

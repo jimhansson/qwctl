@@ -18,6 +18,10 @@
     <method name="setMinimized">
       <arg name="minimize" type="b" direction="in"/>
     </method>
+
+    <method name="setMaximized">
+      <arg name="maximize" type="b" direction="in"/>
+    </method>
     
     <!-- Signals, i.e. emitted information -->
     <signal name="applicationInfo">
