@@ -14,6 +14,8 @@ main(int ac, char** av)
 
   QString registrationObjectName;
   if (ac > 1) {
+    // This is for debugging only, i.e using a different name to be able to
+    // have multiple clients at the same time.
     registrationObjectName = "/" + QString(av[1]);
   } else {
     registrationObjectName = "/qwctl";
